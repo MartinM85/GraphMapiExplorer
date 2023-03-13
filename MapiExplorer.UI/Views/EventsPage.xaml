@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.EventsPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout Margin="5">
+            <Picker ItemsSource="{Binding Calendars}" SelectedItem="{Binding SelectedCalendar}" ItemDisplayBinding="{Binding Name}"
+                    WidthRequest="250" Title="Selected calendar:"/>
+            <Picker Margin="10,0" ItemsSource="{Binding TimeZones, Mode=OneWay}" SelectedItem="{Binding SelectedTimeZone}" WidthRequest="250" Title="Time zone:"/>
+            <Picker ItemsSource="{Binding MeetingDurations}" SelectedItem="{Binding SelectedMeetingDuration}" ItemDisplayBinding="{Binding DisplayName}"
+                     WidthRequest="250" Title="Filter by meeting duration:"/>
+            <Button Margin="10,0,0,0" Text="Previous week" MaximumHeightRequest="25" VerticalOptions="End" WidthRequest="130"
+                    Command="{Binding SetPreviousWeekCommand}"/>
+            <VerticalStackLayout>
+                <Label>
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}Start:{0:yyyy-MM-dd} End:{1:yyyy-MM-dd}">
+                            <Binding Path="StartDateTime" />
+                            <Binding Path="EndDateTime" />
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+                <Button Text="Current week" MaximumHeightRequest="25" WidthRequest="130" Command="{Binding SetCurrentWeekCommand}"/>
+            </VerticalStackLayout>
+            <Button Text="Next week" MaximumHeightRequest="25" VerticalOptions="End" WidthRequest="130" Command="{Binding SetNextWeekCommand}"/>
+        </HorizontalStackLayout>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Events}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" 
+                                  BackgroundColor="{Binding Source={RelativeSource AncestorType={x:Type viewModels:EventsPageViewModel}}, 
+                                                     Path=SelectedCalendar.Color, Converter={x:StaticResource CalendarColorToMauiColorConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VerticalStackLayout>
+                                    <Label Margin="5" Text="{Binding Subject}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding Organizer}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding Location}" FontAttributes="Italic"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Margin="5" Text="{Binding Start, StringFormat='Start: {0:yyyy-MM-dd HH:mm:ss}'}" />
+                                    <Label Margin="5" Text="{Binding End, StringFormat='End:  {0:yyyy-MM-dd HH:mm:ss}'}" />
+                                </VerticalStackLayout>
+                                <Button Margin="0,0,15,0" Grid.Column="2" VerticalOptions="Center"
+                                        Text="Inspect MAPI"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:EventsPageViewModel}}, Path=InspectMapiCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

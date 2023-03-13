@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.MessagesPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <VerticalStackLayout>
+            <Entry Margin="5" Placeholder="Type text to filter messages by subject" Text="{Binding FilterSubject}" ReturnCommand="{Binding FilterCommand}"/>
+			<Entry Margin="5" Placeholder="Type text to filter messages by sender" Text="{Binding FilterSender}" ReturnCommand="{Binding FilterCommand}"/>
+            <HorizontalStackLayout Margin="5">
+                <Label Margin="5,0,0,0"  Text="Allow filter from:" VerticalTextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding AllowFilterStart}"
+                      ToolTipProperties.Text="DatePicker doesn't allow nullable values"/>
+                <Label Text="Start date:" VerticalTextAlignment="Center" IsEnabled="{Binding AllowFilterStart}"/>
+                <DatePicker Margin="5,0,0,0" Date="{Binding StartDateTime}" IsEnabled="{Binding AllowFilterStart}"/>
+                <Label Margin="5,0,0,0"  Text="Allow filter to:" VerticalTextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding AllowFilterEnd}"
+                      ToolTipProperties.Text="DatePicker doesn't allow nullable values"/>
+                <Label Margin="15,0,0,0" Text="End date:" VerticalTextAlignment="Center" IsEnabled="{Binding AllowFilterEnd}"/>
+                <DatePicker Margin="5,0,5,0" Date="{Binding EndDateTime}" IsEnabled="{Binding AllowFilterEnd}"/>
+                <Button Text="Filter" Command="{Binding FilterCommand}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Messages}" EmptyViewTemplate="{StaticResource EmptyTemplate}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" BackgroundColor="WhiteSmoke">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VerticalStackLayout>
+                                    <Label Margin="5" Text="{Binding Sender}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding Subject}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding ReceivedDateTime, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" />
+                                </VerticalStackLayout>
+                                <Button Margin="0,0,15,0" Grid.Column="1" VerticalOptions="Center"
+                                        Text="Inspect MAPI"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MessagesPageViewModel}}, Path=InspectMapiCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

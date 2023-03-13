@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.UsersPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels"
+             xmlns:converters="clr-namespace:MapiExplorer.UI.Converters">
+    <ContentPage.Resources>
+        <converters:UserAvailabilityToColorConverter x:Key="UserAvailabilityToColorConverter"/>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Entry Placeholder="Type text to filter users" Text="{Binding Filter}" ReturnCommand="{Binding FilterCommand}"/>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Users}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" BackgroundColor="WhiteSmoke">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Rectangle Fill="{Binding Availability, Converter={x:StaticResource UserAvailabilityToColorConverter}}" Grid.RowSpan="2" Aspect="Uniform"
+                                       ToolTipProperties.Text="{Binding Activity}" />
+                                <Label Margin="10,0,0,0" Text="{Binding DisplayName}" FontSize="Medium" Grid.Column="1"/>
+                                <Label Margin="20,0,0,0" Grid.Row="1" Text="{Binding Email}" Grid.Column="1" FontAttributes="Bold" />
+                                <Label Margin="5" Grid.Column="2" Text="GitHub work account:"/>
+                                <Label Margin="5" Grid.Column="2" Grid.Row="1" Text="GitHub personal account:"/>
+                                <Label Margin="5" Grid.Column="3" Text="{Binding GitHubWorkAccount}" />
+                                <Label Margin="5" Grid.Column="3" Grid.Row="1" Text="{Binding GitHubPersonalAccount}" />
+                                <Button Margin="0,0,15,0" Grid.Column="4" Text="Edit accounts" Grid.RowSpan="2" VerticalOptions="Center"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:UsersPageViewModel}}, Path=EditGitHubAccountsCommand}" 
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <HorizontalStackLayout Grid.Row="2" BackgroundColor="LightGray">
+            <Button Margin="5" Text="Export to CSV" Command="{Binding ExportToCsvCommand}"/>
+            <Button Margin="5" Text="Send to mail" Command="{Binding SendToMailCommand}"/>
+            <ActivityIndicator IsRunning="{Binding ExportingData}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

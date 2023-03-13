@@ -1,0 +1,52 @@
+﻿[
+  {
+    "Name": "InternalSystemId",
+    "Type": "String",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "ImportanceLevel",
+    "Type": "Integer",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "NeedSecurityCheck",
+    "Type": "Boolean",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "GitHubNotificationTime",
+    "Type": "SystemTime",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "OperationResult",
+    "Type": "Short",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "CostCalculation",
+    "Type": "Double",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "AlternativeNames",
+    "Type": "StringArray",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "EquipmentIds",
+    "Type": "IntegerArray",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "ShowDetails",
+    "Type": "BooleanArray",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  },
+  {
+    "Name": "ImportantDateTimes",
+    "Type": "SystemTimeArray",
+    "PropertySet": "{00020329-0000-0000-C000-000000000046}"
+  }
+]

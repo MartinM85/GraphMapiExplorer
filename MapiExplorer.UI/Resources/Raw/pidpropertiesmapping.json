@@ -1,0 +1,302 @@
+﻿{
+  "ResourceTagProperties": {
+    "Messages": [
+      "PidTagEntryId",
+      "PidTagAutoForwarded",
+      "PidTagCreationTime",
+      "PidTagDisplayBcc",
+      "PidTagDisplayCc",
+      "PidTagDisplayTo",
+      "PidTagLastModificationTime",
+      "PidTagMessageClass",
+      "PidTagMessageFlags",
+      "PidTagMessageRecipients",
+      "PidTagMessageSize",
+      "PidTagMessageCcMe",
+      "PidTagMessageRecipientMe",
+      "PidTagMessageToMe",
+      "PidTagNormalizedSubject",
+      "PidTagParentEntryId",
+      "PidTagRecipientType",
+      "PidTagRecordKey",
+      "PidTagOriginalSearchKey",
+      "PidTagStoreEntryId",
+      "PidTagBody",
+      "PidTagBodyHtml",
+      "PidTagConversationId",
+      "PidTagConversationIndex",
+      "PidTagConversationTopic",
+      "PidTagMessageDeliveryTime",
+      "PidTagOriginalDeliveryTime",
+      "PidTagOriginalDisplayBcc",
+      "PidTagOriginalDisplayCc",
+      "PidTagOriginalDisplayTo",
+      "PidTagOriginalSubject",
+      "PidTagOriginalSubmitTime",
+      "PidTagReportTag",
+      "PidTagReportText",
+      "PidTagReportTime",
+      "PidTagSubject",
+      "PidTagEmailAddress"
+    ],
+    "Events": [
+      "PidTagEntryId",
+      "PidTagParentEntryId",
+      "PidTagDisplayName",
+      "PidTagCreationTime",
+      "PidTagLastModificationTime"
+    ],
+    "MailFolders": [
+      "PidTagDisplayNamePrefix",
+      "PidTagEntryId",
+      "PidTagFolderType",
+      "PidTagObjectType",
+      "PidTagParentEntryId",
+      "PidTagRecordKey",
+      "PidTagStoreEntryId",
+      "PidTagAccess",
+      "PidTagAttributeHidden",
+      "PidTagAttributeReadOnly",
+      "PidTagAttributeSystem",
+      "PidTagContentCount",
+      "PidTagContentUnreadCount",
+      "PidTagComment",
+      "PidTagCreationTime",
+      "PidTagLastModificationTime",
+      "PidTagContainerFlags",
+      "PidTagSubfolders",
+      "PidTagAddressBookContainerId",
+      "PidTagAddressBookFolderPathname",
+      "PidTagAddressBookPhoneticGivenName",
+      "PidTagAddressBookPhoneticSurname"
+    ],
+    "Calendars": [
+      "PidTagEntryId",
+      "PidTagDisplayName",
+      "PidTagCreationTime",
+      "PidTagLastModificationTime",
+      "PidTagCalendarType",
+      "PidTagWlinkCalendarColor"
+    ],
+    "Contacts": [
+      "PidTagEntryId",
+      "PidTagParentEntryId",
+      "PidTagDisplayName",
+      "PidTagCreationTime",
+      "PidTagLastModificationTime"
+    ],
+    "ContactFolders": [
+      "PidTagDisplayNamePrefix",
+      "PidTagEntryId",
+      "PidTagFolderType",
+      "PidTagObjectType",
+      "PidTagParentEntryId",
+      "PidTagRecordKey",
+      "PidTagStoreEntryId",
+      "PidTagAccess",
+      "PidTagAttributeHidden",
+      "PidTagAttributeReadOnly",
+      "PidTagAttributeSystem",
+      "PidTagContentCount",
+      "PidTagContentUnreadCount",
+      "PidTagComment",
+      "PidTagCreationTime",
+      "PidTagLastModificationTime",
+      "PidTagContainerFlags",
+      "PidTagSubfolders",
+      "PidTagAddressBookFolderPathname",
+      "PidTagAddressBookPhoneticGivenName",
+      "PidTagAddressBookPhoneticSurname"
+    ]
+  },
+  "ResourceLidProperties": {
+    "Messages": [
+      "PidLidCommonStart",
+      "PidLidCommonEnd"
+    ],
+    "Events": [
+      "PidLidAppointmentAuxiliaryFlags",
+      "PidLidAppointmentColor",
+      "PidLidAppointmentCounterProposal",
+      "PidLidAppointmentDuration",
+      "PidLidAppointmentEndDate",
+      "PidLidAppointmentEndTime",
+      "PidLidAppointmentEndWhole",
+      "PidLidAppointmentLastSequence",
+      "PidLidAppointmentMessageClass",
+      "PidLidAppointmentProposalNumber",
+      "PidLidAppointmentProposedDuration",
+      "PidLidAppointmentProposedEndWhole",
+      "PidLidAppointmentProposedStartWhole",
+      "PidLidAppointmentRecur",
+      "PidLidAppointmentReplyName",
+      "PidLidAppointmentReplyTime",
+      "PidLidAppointmentSequence",
+      "PidLidAppointmentSequenceTime",
+      "PidLidAppointmentStartDate",
+      "PidLidAppointmentStartTime",
+      "PidLidAppointmentStartWhole",
+      "PidLidAppointmentStateFlags",
+      "PidLidAppointmentSubType",
+      "PidLidAppointmentTimeZoneDefinitionEndDisplay",
+      "PidLidAppointmentTimeZoneDefinitionRecur",
+      "PidLidAppointmentTimeZoneDefinitionStartDisplay",
+      "PidLidAppointmentUnsendableRecipients",
+      "PidLidAppointmentUpdateTime",
+      "PidLidCalendarType"
+    ],
+    "MailFolders": [
+      "PidLidClassification",
+      "PidLidClassificationDescription",
+      "PidLidClassificationGuid",
+      "PidLidClassificationKeep",
+      "PidLidClassified"
+    ],
+    "Calendars": [
+      "PidLidClassification",
+      "PidLidClassificationDescription",
+      "PidLidClassificationGuid",
+      "PidLidClassificationKeep",
+      "PidLidClassified"
+    ],
+    "Contacts": [
+      "PidLidContactCharacterSet",
+      "PidLidContactItemData2",
+      "PidLidContactLinkedGlobalAddressListEntryId",
+      "PidLidContactLinkEntry",
+      "PidLidContactLinkGlobalAddressListLinkId",
+      "PidLidContactLinkGlobalAddressListLinkState",
+      "PidLidContactLinkLinkRejectHistory",
+      "PidLidContactLinkName",
+      "PidLidContactLinkSearchKey",
+      "PidLidContactLinkSMTPAddressCache",
+      "PidLidContacts",
+      "PidLidContactUserField1",
+      "PidLidContactUserField2",
+      "PidLidContactUserField3",
+      "PidLidContactUserField4",
+      "PidLidEmail1AddressType",
+      "PidLidEmail1DisplayName",
+      "PidLidEmail1EmailAddress",
+      "PidLidEmail1EmailType",
+      "PidLidEmail1EntryId",
+      "PidLidEmail1OriginalDisplayName",
+      "PidLidEmail1OriginalDisplayName",
+      "PidLidEmail1OriginalEntryId",
+      "PidLidEmail1RichTextFormat",
+      "PidLidHasPicture",
+      "PidLidYomiCompanyName",
+      "PidLidYomiFirstName",
+      "PidLidYomiLastName"
+    ],
+    "ContactFolders": [
+      "PidLidClassification",
+      "PidLidClassificationDescription",
+      "PidLidClassificationGuid",
+      "PidLidClassificationKeep",
+      "PidLidClassified"
+    ]
+  },
+  "ResourceNamedProperties": {
+    "Messages": [
+      "PidNameMessageId",
+      "PidNameMimeVersion",
+      "PidNameSubject",
+      "PidNameTitle"
+    ],
+    "Events": [
+      "PidNameSubject",
+      "PidNameTitle"
+    ],
+    "MailFolders": [
+      "PidNameSubject",
+      "PidNameTitle"
+    ],
+    "Calendars": [
+      "PidNameSubject",
+      "PidNameTitle"
+    ],
+    "Contacts": [
+      "PidNameSubject",
+      "PidNameTitle"
+    ],
+    "ContactFolders": [
+      "PidNameSubject",
+      "PidNameTitle"
+    ]
+  },
+  "ResourceCustomNamedProperties": {
+    "Messages": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ],
+    "Events": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ],
+    "MailFolders": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ],
+    "Calendars": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ],
+    "Contacts": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ],
+    "ContactFolders": [
+      "InternalSystemId",
+      "ImportanceLevel",
+      "NeedSecurityCheck",
+      "GitHubNotificationTime",
+      "OperationResult",
+      "CostCalculation",
+      "AlternativeNames",
+      "EquipmentIds",
+      "ShowDetails",
+      "ImportantDateTimes"
+    ]
+  }
+}

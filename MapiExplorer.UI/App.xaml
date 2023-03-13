@@ -1,0 +1,48 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MapiExplorer.UI"
+             xmlns:models="clr-namespace:MapiExplorer.Models;assembly=MapiExplorer.Models"
+             xmlns:selectors="clr-namespace:MapiExplorer.UI.Selectors"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels"
+             xmlns:converters="clr-namespace:MapiExplorer.UI.Converters"
+             x:Class="MapiExplorer.UI.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="FileTemplate" x:DataType="models:DriveItemDto" >
+                <Frame>
+                    <HorizontalStackLayout>
+                        <Image Source="icon_file.png" Margin="0,0,25,0"/>
+                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+            </DataTemplate>
+            <DataTemplate x:Key="FolderTemplate" x:DataType="models:DriveItemDto" >
+                <Frame>
+                    <HorizontalStackLayout>
+                        <Image Source="icon_folder.png" Margin="0,0,25,0"/>
+                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" WidthRequest="400" />
+                        <Label Text="{Binding Folder.ChildCount, StringFormat='{0} item(s)'}" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+            </DataTemplate>
+            <selectors:DriveItemDtoDataTemplateSelector x:Key="DriveItemTemplateSelector" 
+                                                        FileTemplate="{StaticResource FileTemplate}"
+                                                        FolderTemplate="{StaticResource FolderTemplate}"/>
+            <converters:CalendarColorToMauiColorConverter x:Key="CalendarColorToMauiColorConverter"/>
+            <DataTemplate x:Key="EmptyTemplate">
+                <Label LineBreakMode="WordWrap" MaxLines="5">
+                    No data to show. Possible reasons:
+                    - filter
+                    - no internet connection
+                    - wrong configuration (appsettings.json)
+                    Check logs for more details.
+                </Label>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

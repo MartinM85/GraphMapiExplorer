@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.MapiDetailsPage"
+             Title="Inspect MAPI properties">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"/>
+    </Shell.BackButtonBehavior>
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding EntityId, StringFormat='Rest id: {0}'}"/>
+        <Label Grid.Row="1" Text="{Binding EntryId, StringFormat='Entry id: {0}'}"/>
+        <HorizontalStackLayout Margin="0,0,0,5" Grid.Row="2">
+            <Label Text="Select pid lid property:" Margin="5,2" VerticalTextAlignment="Center"/>
+            <Picker ItemsSource="{Binding PidLidSourceProperties}" SelectedItem="{Binding SelectedPidLidProperty}" ItemDisplayBinding="{Binding DisplayName}"
+                WidthRequest="400" HorizontalOptions="Start" VerticalOptions="Center"
+                    Margin="0,0,0,5"/>
+        </HorizontalStackLayout>
+        <Grid BackgroundColor="WhiteSmoke" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Name (id):" Margin="5,2"/>
+            <Label Grid.Column="1" Text="{Binding SelectedPidLidProperty.DisplayName}" FontAttributes="Bold" Margin="5,2"/>
+            <Label Grid.Row="1" Text="Property set:" Margin="5,2"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding SelectedPidLidProperty.PropertySet}" Margin="5,2"/>
+            <Label Grid.Row="2" Text="Type:" Margin="5,2"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SelectedPidLidProperty.Type}" Margin="5,2"/>
+            <Label Grid.Row="3" Text="Value:" Margin="5,2"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding SelectedPidLidProperty.GraphValue}" LineBreakMode="CharacterWrap" Margin="5,2"/>
+            <Label Grid.Row="4" Text="Extended prop.id:" Margin="5,2"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding SelectedPidLidProperty.GraphId}" Margin="5,2"/>
+            <Label Grid.Row="5" Text="Graph expand query:" Margin="5,2"/>
+            <Label Grid.Row="5" Grid.Column="1" Text="{Binding SelectedPidLidProperty.GraphExpandQuery}" Margin="5,2"/>
+            <Button Text="Copy" Grid.Column="2" Grid.Row="5" MinimumHeightRequest="20" FontSize="10"
+                    Command="{Binding CopyToClipboardCommand}" CommandParameter="{Binding SelectedPidLidProperty.GraphExpandQuery}"/>
+        </Grid>
+        <HorizontalStackLayout Grid.Row="4" Margin="0,5,0,5">
+            <Label Text="Select pid tag property:" Margin="5,2" VerticalTextAlignment="Center"/>
+            <Picker ItemsSource="{Binding PidTagSourceProperties}" SelectedItem="{Binding SelectedPidTagProperty}" ItemDisplayBinding="{Binding DisplayName}"
+                WidthRequest="400" HorizontalOptions="Start"/>
+        </HorizontalStackLayout>
+        <Grid BackgroundColor="WhiteSmoke" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Name (id):" Margin="5,2"/>
+            <Label Grid.Column="1" Text="{Binding SelectedPidTagProperty.DisplayName}" FontAttributes="Bold" Margin="5,2"/>
+            <Label Grid.Row="1" Text="Type:" Margin="5,2"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding SelectedPidTagProperty.Type}" Margin="5,2"/>
+            <Label Grid.Row="2" Text="Value:" Margin="5,2"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SelectedPidTagProperty.GraphValue}" LineBreakMode="CharacterWrap" Margin="5,2"/>
+            <Label Grid.Row="3" Text="Extended prop.id:" Margin="5,2"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding SelectedPidTagProperty.GraphId}" Margin="5,2"/>
+            <Label Grid.Row="4" Text="Graph expand query:" Margin="5,2"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding SelectedPidTagProperty.GraphExpandQuery}" Margin="5,2"/>
+            <Button Text="Copy" Grid.Column="2" Grid.Row="5" MinimumHeightRequest="20" FontSize="10"
+                    Command="{Binding CopyToClipboardCommand}" CommandParameter="{Binding SelectedPidTagProperty.GraphExpandQuery}"/>
+        </Grid>
+        <HorizontalStackLayout Grid.Row="6" Margin="0,5,0,5">
+            <Label Text="Select pid named property:" Margin="5,2" VerticalTextAlignment="Center"/>
+            <Picker ItemsSource="{Binding PidNameSourceProperties}" SelectedItem="{Binding SelectedPidNameProperty}" ItemDisplayBinding="{Binding Id}"
+                WidthRequest="400" HorizontalOptions="Start"/>
+            <Button Text="Update value" Command="{Binding UpdateNamedPropertyValueCommand}" WidthRequest="130" Margin="5,0"/>
+            <Button Text="Cancel update" Command="{Binding CancelUpdateNamedPropertyValueCommand}" WidthRequest="130" HorizontalOptions="Start"/>
+        </HorizontalStackLayout>        
+        <Grid BackgroundColor="WhiteSmoke" Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Name (id):" Margin="5,2"/>
+            <Label Grid.Column="1" Text="{Binding SelectedPidNameProperty.DisplayName}" FontAttributes="Bold" Margin="5,2"/>
+            <Label Grid.Row="1" Text="Property set:" Margin="5,2"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding SelectedPidNameProperty.PropertySet}" Margin="5,2"/>
+            <Label Grid.Row="2" Text="Type:" Margin="5,2"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SelectedPidNameProperty.Type}" Margin="5,2"/>
+            <Label Grid.Row="3" Text="Value:" Margin="5,2" VerticalTextAlignment="Center"/>
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding SelectedPidNamePropertyValue}" Margin="5,2" Placeholder="{Binding SelectedPidNameProperty.Hint}"/>
+            <Label Grid.Row="4" Text="Extended prop.id:" Margin="5,2"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding SelectedPidNameProperty.GraphId}" Margin="5,2"/>
+            <Label Grid.Row="5" Text="Graph expand query:" Margin="5,2"/>
+            <Label Grid.Row="5" Grid.Column="1" Text="{Binding SelectedPidNameProperty.GraphExpandQuery}" Margin="5,2"/>
+            <Button Text="Copy" Grid.Column="2" Grid.Row="5" MinimumHeightRequest="20" FontSize="10"
+                    Command="{Binding CopyToClipboardCommand}" CommandParameter="{Binding SelectedPidNameProperty.GraphExpandQuery}"/>
+        </Grid>
+    </Grid>
+</ContentPage>

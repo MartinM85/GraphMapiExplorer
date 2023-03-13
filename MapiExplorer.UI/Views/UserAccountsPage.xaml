@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.UserAccountsPage"
+             Title="{Binding DisplayName, StringFormat='Detail: {0}'}">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}" TextOverride="Back to users"/>
+    </Shell.BackButtonBehavior>
+    <Grid BackgroundColor="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame Grid.RowSpan="4" HeightRequest="150"
+                   WidthRequest="150"
+                   CornerRadius="70"
+                   HorizontalOptions="Center"
+                   IsClippedToBounds="True"
+                   Padding="0"
+                   BorderColor="Gray"
+                   Margin="10">
+            <Image Source="{Binding Photo}" Aspect="AspectFit" />
+        </Frame>
+        
+        <Label Text="{Binding DisplayName}" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" FontSize="Subtitle"/>
+        <Label Text="{Binding Managers, StringFormat='Managers: {0}'}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Label Margin="5" Text="Work account:" VerticalTextAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+        <Entry Margin="5" WidthRequest="200" HeightRequest="50" Text="{Binding WorkAccount}" Grid.Column="2" Grid.Row="2"/>
+            <Label Text="Personal account:" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+        <Entry WidthRequest="200" Text="{Binding PersonalAccount}" HeightRequest="50" Grid.Row="3" Grid.Column="2"/>
+        <HorizontalStackLayout Grid.Row="4" BackgroundColor="LightGray" Grid.ColumnSpan="3">
+            <Button Margin="5" Text="Save" Command="{Binding SaveCommand}" />
+            <Button Margin="5" Text="Cancel" Command="{Binding BackCommand}" HorizontalOptions="End"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

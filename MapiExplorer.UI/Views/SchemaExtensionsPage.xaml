@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.SchemaExtensionsPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Entry Placeholder="Type extension id" Text="{Binding Filter}" ReturnCommand="{Binding FilterCommand}"/>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding SchemaExtensions}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" BackgroundColor="WhiteSmoke">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Margin="5" Text="{Binding Id}" FontAttributes="Bold"/>
+                                <Label Margin="5" Text="{Binding Description}"  Grid.Row="1"/>
+                                <Button Margin="0,0,15,0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"
+                                        Text="Details"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SchemaExtensionsPageViewModel}}, Path=ShowDetailsCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <HorizontalStackLayout Grid.Row="2" BackgroundColor="LightGray">
+            <Button Margin="5" Text="Create GitHub extension" Command="{Binding CreateExtensionSchemaCommand}"/>
+        </HorizontalStackLayout>
+        <ActivityIndicator Grid.RowSpan="3" IsRunning="{Binding LoadingData}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+</ContentPage>

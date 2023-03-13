@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.ContactsPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels">
+    <Grid>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Contacts}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" BackgroundColor="WhiteSmoke">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VerticalStackLayout>
+                                    <Label Margin="5" Text="{Binding DisplayName}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding CompanyName, StringFormat='Company: {0}'}" />
+                                    <Label Margin="5" Text="{Binding MobilePhone, StringFormat='Mobile phone: {0}'}"/>
+                                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding EmailAddresses}">
+                                        <Label Margin="5,0" Text="Emails: "/>
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Margin="5,0" Text="{Binding}" />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                                <Button Margin="0,0,15,0" Grid.Column="1" VerticalOptions="Center"
+                                        Text="Inspect MAPI"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ContactsPageViewModel}}, Path=InspectMapiCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.SchemaExtensionDetailsPage"
+             Title="{Binding SchemaExtension.Id, StringFormat='Schema extension {0}'}">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"/>
+    </Shell.BackButtonBehavior>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="{Binding SchemaExtension.Id}" Margin="5" FontSize="Header"/>
+            <Label Text="Description" Margin="5" FontSize="Subtitle"/>
+            <Label Text="{Binding SchemaExtension.Description}" Margin="5"/>
+            <Label Text="Target types: " Margin="5" FontSize="Subtitle"/>
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding SchemaExtension.TargetTypes}" Margin="5">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <Label Text="Properties: " Margin="5" FontSize="Subtitle"/>
+            <Grid HorizontalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Name" Margin="5" FontSize="Medium"/>
+                <Label Text="Type" Grid.Column="1"  Margin="5" FontSize="Medium"/>
+            </Grid>
+            <CollectionView ItemsSource="{Binding SchemaExtension.Properties}" HorizontalOptions="Start">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="3,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Padding="5">
+                                <Label Text="{Binding Name}" Margin="5"/>
+                            </Border>
+                            <Border Grid.Column="1" Padding="5">
+                                <Label Text="{Binding Type}" Margin="5"/>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapiExplorer.UI.Views.MailFoldersPage"
+             xmlns:viewModels="clr-namespace:MapiExplorer.UI.ViewModels">
+    <Grid>
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding MailFolders}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid Margin="3" BackgroundColor="WhiteSmoke">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VerticalStackLayout>
+                                    <Label Margin="5" Text="{Binding DisplayName}" FontAttributes="Bold" />
+                                    <Label Margin="5" Text="{Binding ChildFolderCount, StringFormat='Child folders: {0}'}"/>
+                                    <Label Margin="5" Text="{Binding TotalItemCount, StringFormat='Total items: {0}'}" />
+                                    <Label Margin="5" Text="{Binding UnreadItemCount, StringFormat='Unread items: {0}'}" />
+                                </VerticalStackLayout>
+                                <Button Margin="0,0,15,0" Grid.Column="1" VerticalOptions="Center"
+                                        Text="Inspect MAPI"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MailFoldersPageViewModel}}, Path=InspectMapiCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

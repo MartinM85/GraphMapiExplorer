@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MapiExplorer.UI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MapiExplorer.UI"
+    xmlns:views="clr-namespace:MapiExplorer.UI.Views"
+    Title="MAPI Explorer">
+
+    <TabBar>
+        <Tab Title="Messages">
+            <ShellContent Route="{x:Static local:Routes.Messages}" Title="Messages"
+                ContentTemplate="{DataTemplate views:MessagesPage}"/>
+        </Tab>
+        <Tab Title="Calendars">
+            <ShellContent Route="{x:Static local:Routes.Calendars}" Title="Calendars"
+                ContentTemplate="{DataTemplate views:CalendarsPage}"/>
+        </Tab>
+        <Tab Title="Events">
+            <ShellContent Route="{x:Static local:Routes.Events}" Title="Events"
+                ContentTemplate="{DataTemplate views:EventsPage}"/>
+        </Tab>
+        <Tab Title="Mail folders">
+            <ShellContent Route="{x:Static local:Routes.MailFolders}" Title="Mail folders"
+                ContentTemplate="{DataTemplate views:MailFoldersPage}"/>
+        </Tab>
+        <Tab Title="Contacts">
+            <ShellContent Route="{x:Static local:Routes.Contacts}" Title="Contacts"
+                ContentTemplate="{DataTemplate views:ContactsPage}"/>
+        </Tab>
+        <Tab Title="Contact folders">
+            <ShellContent Route="{x:Static local:Routes.ContactFolders}" Title="Contact folders"
+                ContentTemplate="{DataTemplate views:ContactFoldersPage}"/>
+        </Tab>
+        <Tab Title="Extensions">
+            <ShellContent Route="{x:Static local:Routes.SchemaExtensions}" Title="Extensions"
+                ContentTemplate="{DataTemplate views:SchemaExtensionsPage}"/>
+        </Tab>
+        <Tab Title="Users">
+            <ShellContent Route="{x:Static local:Routes.Users}" Title="Users"
+                ContentTemplate="{DataTemplate views:UsersPage}"/>
+        </Tab>
+        <Tab Title="Files">
+            <ShellContent Route="{x:Static local:Routes.Files}" Title="Files"
+                ContentTemplate="{DataTemplate views:FilesPage}"/>
+        </Tab>
+    </TabBar>
+
+</Shell>
