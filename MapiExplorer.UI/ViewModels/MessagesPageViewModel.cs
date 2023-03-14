@@ -7,6 +7,8 @@ namespace MapiExplorer.UI.ViewModels
 {
     public class MessagesPageViewModel : ViewModelBase
     {
+        // one second before midnight
+        private const int NumberOfSecondsUntilMidnight = 86399;
         private readonly IMessagesService _messagesService;
 
         public MessagesPageViewModel(IMessagesService messagesService)
@@ -17,6 +19,9 @@ namespace MapiExplorer.UI.ViewModels
             InspectMapiCommand = new Command(InspectMapiProperties);
 
             Messages = new ObservableCollectionEx<MessageDto>();
+
+            EndDateTime = DateTime.Now.Date.AddSeconds(NumberOfSecondsUntilMidnight);
+            StartDateTime = EndDateTime.AddDays(-7);
         }
 
         public ObservableCollectionEx<MessageDto> Messages { get; set; }
@@ -39,6 +44,11 @@ namespace MapiExplorer.UI.ViewModels
             set
             {
                 _endDateTime = value;
+                if (_endDateTime.Hour == 0 && _endDateTime.Minute == 0 && _endDateTime.Second == 0)
+                {
+                    // data picker set only date component
+                    _endDateTime = _endDateTime.AddSeconds(NumberOfSecondsUntilMidnight);
+                }
                 OnPropertyChanged();
             }
         }
