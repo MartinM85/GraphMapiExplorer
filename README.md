@@ -156,8 +156,6 @@ The start and end date time in the event's detail reflects the selected **time z
 
 Use **Previous week** and **Next week** buttons to list events backward and forward. Use **Current week** to return to default.
 
-There is a filter where user can filter events by meeting duration. The filtering is applied to [PidLidAppointmentDuration](https://learn.microsoft.com/en-us/office/client-developer/outlook/mapi/pidlidappointmentduration-canonical-property) single-value extended property.
-
 Range for displayed events is one work week started on Monday.
 
 ![](assets/Events.png)

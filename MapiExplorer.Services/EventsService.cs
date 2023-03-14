@@ -26,11 +26,12 @@ namespace MapiExplorer.Services
                 var response = await _client.Me.Calendars[calendarId].CalendarView.GetAsync(x =>
                 {
                     x.QueryParameters.Select = new[] { "id", "subject", "organizer", "start", "end", "location", "bodyPreview" };
-                    if (durationFilter != null && !string.IsNullOrEmpty(durationFilter.FilterOperator))
-                    {
-                        var pidLid = PidPropertyFactory.Create(PidLidProperties.PidLidAppointmentDuration);
-                        x.QueryParameters.Filter = $"singleValueExtendedProperties/Any(ep: ep/id eq '{pidLid.GraphId}' and cast(ep/value, Edm.Int32) {durationFilter.FilterOperator} {durationFilter.DurationMinutes})";
-                    }
+                    // calendarview doesn't support filtering by single extended property
+                    //if (durationFilter != null && !string.IsNullOrEmpty(durationFilter.FilterOperator))
+                    //{
+                    //    var pidLid = PidPropertyFactory.Create(PidLidProperties.PidLidAppointmentDuration);
+                    //    x.QueryParameters.Filter = $"singleValueExtendedProperties/Any(ep: ep/id eq '{pidLid.GraphId}' and cast(ep/value, Edm.Int32) {durationFilter.FilterOperator} {durationFilter.DurationMinutes})";
+                    //}
                     x.QueryParameters.StartDateTime = startDateTimeUtc.ToString("yyyy-MM-ddThh:mm:ss");
                     x.QueryParameters.EndDateTime = endDateTimeUtc.ToString("yyyy-MM-ddThh:mm:ss");
                     if (!string.IsNullOrEmpty(timezone))

@@ -12,8 +12,8 @@
             <Picker ItemsSource="{Binding Calendars}" SelectedItem="{Binding SelectedCalendar}" ItemDisplayBinding="{Binding Name}"
                     WidthRequest="250" Title="Selected calendar:"/>
             <Picker Margin="10,0" ItemsSource="{Binding TimeZones, Mode=OneWay}" SelectedItem="{Binding SelectedTimeZone}" WidthRequest="250" Title="Time zone:"/>
-            <Picker ItemsSource="{Binding MeetingDurations}" SelectedItem="{Binding SelectedMeetingDuration}" ItemDisplayBinding="{Binding DisplayName}"
-                     WidthRequest="250" Title="Filter by meeting duration:"/>
+            <!--<Picker ItemsSource="{Binding MeetingDurations}" SelectedItem="{Binding SelectedMeetingDuration}" ItemDisplayBinding="{Binding DisplayName}"
+                     WidthRequest="250" Title="Filter by meeting duration:"/>-->
             <Button Margin="10,0,0,0" Text="Previous week" MaximumHeightRequest="25" VerticalOptions="End" WidthRequest="130"
                     Command="{Binding SetPreviousWeekCommand}"/>
             <VerticalStackLayout>
