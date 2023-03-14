@@ -2,11 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MapiExplorer.UI.Views.FilesPage">
-    <VerticalStackLayout Margin="5">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Picker Title="Select items source" ItemsSource="{Binding ItemsSource}" SelectedItem="{Binding SelectedItemsSource}" ItemDisplayBinding="{Binding Name}" />
-        <CollectionView ItemsSource="{Binding DriveItems}" SelectionMode="Single" SelectedItem="{Binding SelectedDriveItem}"
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding DriveItems}" SelectionMode="Single" SelectedItem="{Binding SelectedDriveItem}"
                     SelectionChangedCommand="{Binding GoToDetailsCommand}"
                     ItemTemplate="{StaticResource DriveItemTemplateSelector}">
-        </CollectionView>
-    </VerticalStackLayout>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
 </ContentPage>
