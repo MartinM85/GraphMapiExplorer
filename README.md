@@ -268,3 +268,9 @@ For debugging the log is placed in `..\MapiExplorer.UI\bin\Debug\net7.0-windows1
 ## Supported platforms
 
 Only supported platform is **Windows**. The app was tested only on Windows.
+
+## Demo
+
+
+https://user-images.githubusercontent.com/7744844/225309499-9159c558-4716-43c6-8037-ed7343b9a12a.mp4
+
